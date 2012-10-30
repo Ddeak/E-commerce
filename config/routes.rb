@@ -1,9 +1,13 @@
 SecurITy::Application.routes.draw do
-  devise_for :customers
+  
+  authenticated :user do
+    root :to => 'core_pages#home'
+  end
+
+  devise_for :users
+  resources :users
 
   ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

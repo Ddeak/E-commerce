@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SecurITy</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<title><%= content_for?(:title) ? yield(:title) : "SecurITy" %></title>
+  	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "SecurITy" %>">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 </head>
 <body>
+	<header class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+          <%= render 'layouts/navigationbar' %>
+        </div>
+      </nav>
+    </header>
 
+    <div id="currentPage" role="currentPage">
+    	<div class="container">
+    		<div class="content">
+    			<div class= row>
+    				<div class="span12">
+    					<%= render 'layouts/messages' %>
+    					<%= yield %>
+    				</div>
+    			</div>
 
-<%= yield %>
+    			<footer>
 
+    			</footer>
+
+    		</div>
+    	</div> <!-- end of container -->
+    </div> <!-- end of currentPage -->
 </body>
 </html>
